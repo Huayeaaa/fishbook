@@ -121,8 +121,10 @@ def mailed_drift(did):
         drift_obj.status = DriftStatus.SUCCESS.value
         # 完成赠与，给赠送者发鱼豆奖励
         current_user.beans += current_app.config["BEANS_EVERY_DRIFT"]
-        Gift.query.filter_by(id=drift_obj.gift_id, launched=False).update(launched=True)
+        Gift.query.filter_by(id=drift_obj.gift_id, launched=False).update(
+            {"launched": True}
+        )
         Wish.query.filter_by(
             isbn=drift_obj.isbn, launched=False, uid=drift_obj.requester_id
-        ).update(launched=True)
+        ).update({"launched": True})
     return redirect(url_for("web.drift"))
