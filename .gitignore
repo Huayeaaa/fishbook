@@ -1,0 +1,11 @@
+.venv
+.idea
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 其他常见忽略
+.DS_Store
+*.log
